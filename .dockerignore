@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+#Logs
+log/*
+
+# Temp files
+tmp/*
+
+# Editor temp files
+*.swp
+*.swo
+*.swp
+*~
+.DS_Store
+
+# Package Files
+
+*.jar
+*.war
+*.ear
+/node_modules
+
+# IDE specific files
+.idea/
+.settings/
+.project
+.classpath
+*.iml
+/project
+/nbproject/
+nb-configuration.xml
+saml_DEVELOPMENT.properties
+*.zip
