@@ -1,6 +1,6 @@
 FROM ruby:2.5.1
 
-LABEL maintainer="Serguei CAMBOUR <s.cambour@gmail.com>"
+LABEL maintainer="DECATHLON"
 
 RUN apt-get update -yqq
 RUN apt-get install -yqq --no-install-recommends nodejs
@@ -11,4 +11,11 @@ RUN bundle install
 
 COPY . /usr/src/app/
 
+ENTRYPOINT ["bundle", "exec"]
+
 CMD ["rails", "s", "-b", "0.0.0.0"]
+
+# When the container is running, execute the below commands:
+
+  # run docker-compose exec web rails db:reset
+  # run docker-compose exec web rails db:init_data
