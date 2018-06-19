@@ -11,9 +11,7 @@ RUN bundle install
 
 COPY . /usr/src/app/
 
-ENTRYPOINT ["bundle", "exec"]
-
-CMD ["rails", "s", "-b", "0.0.0.0"]
+#CMD ["rails", "s", "-b", "0.0.0.0"]
 
 # When the container is running, execute the below commands:
 
