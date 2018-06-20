@@ -7,6 +7,8 @@ RUN apt-get install -yqq --no-install-recommends nodejs
 
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
+
+RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN bundle install
 
 COPY . /usr/src/app/
