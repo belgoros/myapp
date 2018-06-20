@@ -3,7 +3,10 @@ version: '3'
 services:
   web:
     build: .
-    links:
+    entrypoint:
+      - /bin/sh
+      - ./entrypoint.sh
+    depends_on:
       - database
       - redis
     ports:
@@ -13,11 +16,7 @@ services:
     env_file:
       - .env/development/database
       - .env/development/web
-    command:
-      - |
-        rails db:reset
-        rails db:init_data
-        rails s -p 3000 -b '0.0.0.0'
+    command: ['./wait-for-it.sh', 'database:5432', '--', 'bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
   redis:
     image: redis
   database:
