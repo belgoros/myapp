@@ -12,10 +12,3 @@ RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN bundle install
 
 COPY . /usr/src/app/
-
-#CMD ["rails", "s", "-b", "0.0.0.0"]
-
-# When the container is running, execute the below commands:
-
-  # run docker-compose exec web rails db:reset
-  # run docker-compose exec web rails db:init_data
