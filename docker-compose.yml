@@ -10,13 +10,20 @@ services:
       - database
       - redis
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
     env_file:
       - .env/development/database
       - .env/development/web
     command: ['./wait-for-it.sh', 'database:5432', '--', 'bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
+    # Keeps the stdin open, so we can attach to our app container's process and
+    # do stuff such as `byebug` or `binding.pry`:
+    stdin_open: true
+    # Allows us to send signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
+    tty: true
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
   redis:
     image: redis
   database:
@@ -25,5 +32,8 @@ services:
       - .env/development/database
     volumes:
       - db-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
 volumes:
   db-data:
+    driver: local
