@@ -1,6 +1,6 @@
 FROM ruby:2.5.1
 
-LABEL maintainer="DECATHLON"
+LABEL maintainer="Serguei Cambour <s.cambour@gmail.com>"
 
 RUN apt-get update -yqq
 RUN apt-get install -yqq --no-install-recommends nodejs
