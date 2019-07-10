@@ -26,6 +26,6 @@ RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN bundle install
 
 COPY . /usr/src/app/
-RUN test -f tmp/pids/server.pid && rm -f tmp/pids/server.pid; true
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
