@@ -12,9 +12,6 @@ services:
       - .env/development/web
     environment:
       - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server
-    depends_on:
-      - database
-      - redis
     # Keeps the stdin open, so we can attach to our app container's process and
     # do stuff such as `byebug` or `binding.pry`:
     stdin_open: true
