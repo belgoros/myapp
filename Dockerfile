@@ -23,6 +23,8 @@ COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
+RUN gem update --system
+RUN gem install bundler
 RUN bundle install
 
 COPY . /usr/src/app/
