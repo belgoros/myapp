@@ -3,9 +3,6 @@ version: '3'
 services:
   web:
     build: .
-    entrypoint:
-      - /bin/sh
-      - ./entrypoint.sh
     depends_on:
       - database
       - redis
@@ -16,7 +13,6 @@ services:
     env_file:
       - .env/development/database
       - .env/development/web
-    command: ['./wait-for-it.sh', 'database:5432', '--', 'bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
     # Keeps the stdin open, so we can attach to our app container's process and
     # do stuff such as `byebug` or `binding.pry`:
     stdin_open: true
