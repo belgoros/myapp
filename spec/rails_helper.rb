@@ -58,4 +58,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Set the Capybara driver to RackTest driver for standard system tests
+  # Not only is this faster, but it saves us having to install a full browser driver
+  # with JavaScript support (Selenium is the default) until we actually need it
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
 end
