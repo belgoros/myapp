@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -64,5 +64,14 @@ RSpec.configure do |config|
   # with JavaScript support (Selenium is the default) until we actually need it
   config.before(:each, type: :system) do
     driven_by :rack_test
+  end
+
+  # Set the Java- Script tests to use Selenium Chrome Capybara driver
+  # see spec/support/capybara.rb for more details
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_in_container
+    Capybara.server_host = "0.0.0.0"
+    Capybara.server_port = 4000
+    Capybara.app_host = 'http://web:4000'
   end
 end

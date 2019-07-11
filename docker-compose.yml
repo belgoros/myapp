@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - 3000:3000
+      - 4000:4000
     volumes:
       - .:/usr/src/app
     env_file:
@@ -42,6 +43,12 @@ services:
       - db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+    ports:
+      - "5900:5900"
 volumes:
   db-data:
     driver: local
