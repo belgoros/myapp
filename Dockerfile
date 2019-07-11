@@ -1,4 +1,4 @@
-FROM ruby:2.6.1
+FROM ruby:2.6.3
 
 LABEL maintainer="Serguei Cambour <s.cambour@gmail.com>"
 
