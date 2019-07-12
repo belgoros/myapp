@@ -1,10 +1,7 @@
 FROM ruby:2.6.3
 
-LABEL maintainer="Serguei Cambour <s.cambour@gmail.com>"
-
 # Allow apt to work with https-based sources
-RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
-  apt-transport-https
+RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends apt-transport-https
 # Ensure we install an up-to-date version of Node
 # See https://github.com/yarnpkg/yarn/issues/2888
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -22,10 +19,11 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 
-ENV BUNDLE_PATH /gems
-
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN gem update --system
+
+ENV BUNDLE_PATH /gems
+
 RUN gem install bundler
 RUN bundle install
 
