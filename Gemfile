@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'coffee-rails', '~> 4.2'
-gem 'devise',       '~> 4.6', '>= 4.6.2'
+gem 'devise',       '>= 4.7.1'
 gem 'faker',        '~> 1.8', '>= 1.8.7'
 gem 'jbuilder',     '~> 2.5'
 gem 'pg',           '~> 1.0'
