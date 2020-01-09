@@ -27,7 +27,6 @@ services:
       - 3035:3035
     volumes:
       - .:/usr/src/app
-      - .env/development/web
     env_file:
       - .env/development/web
       - .env/development/database
