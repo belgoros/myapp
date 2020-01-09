@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.5
 
 # Allow apt to work with https-based sources
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends apt-transport-https
